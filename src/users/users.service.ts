@@ -15,15 +15,15 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.userEntity.find().exec();
+    return await this.userEntity.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string): Promise<User | null> {
+    return this.userEntity.findById(id).exec();
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserDto: UpdateUserDto) {
+    return this.userEntity.findById(id).exec();
   }
 
   remove(id: number) {
