@@ -1,9 +1,9 @@
 import { createMap, Mapper } from '@automapper/core';
 import { AutomapperProfile, InjectMapper } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
-import { UserReadDto } from 'src/users/dto/user-read.dto';
-import { UserCreateDto } from 'src/users/dto/create-user.dto';
-import { User } from 'src/users/Models/user.model';
+import { ReadUserDto } from 'src/users/dto/read-user.dto';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class UserProfile extends AutomapperProfile {
@@ -13,8 +13,8 @@ export class UserProfile extends AutomapperProfile {
 
   override get profile() {
     return (mapper: Mapper) => {
-      createMap(mapper, User, UserCreateDto).reverse();
-      createMap(mapper, User, UserReadDto).reverse();
+      createMap(mapper, User, CreateUserDto).reverse();
+      createMap(mapper, User, ReadUserDto).reverse();
     };
   }
 }
